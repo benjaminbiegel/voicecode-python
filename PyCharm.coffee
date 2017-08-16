@@ -20,23 +20,23 @@ myPackage = Packages.register
 
 myPackage.commands
   'execute-in-terminal':
-    spoken: 'tunch'
+    spoken: 'cunch'
     description: 'Execute the selected lines of code in the python console.'
     enabled: true
     action: ->
-      @key  'e', 'alt shift'
+      @key  'e', 'shift option'
   'run-python-script':
     spoken: 'runch'
     description: 'Run current script.'
     enabled: true
     action: ->
-      @key 'd', '^'
+      @key 'r', 'control'
   'debug-python-script':
-    spoken: 'dunch'
+    spoken: 'debug'
     description: 'Debug current script.'
     enabled: true
     action: ->
-      @key 'r', '^'
+      @key 'd', 'control'
   'find-by-action':
     spoken: 'actics'
     description: 'Find by action.'
