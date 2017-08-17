@@ -10,13 +10,13 @@ myPackage = Packages.register
 
 # http://wordoid.com/
 # https://resources.jetbrains.com/storage/products/pycharm/docs/PyCharm_ReferenceCard_mac.pdf
-# ⌘ – the Command Key symbol
-# ⌥ – the Option Key symbol
-# ⇧ -the Shift Key symbol
-# ⎋ – the ESC Key symbol
-# ⇪ – the Capslock symbol
-# ⏎ – the Return symbol
-# ⌫ – the Delete / Backspace symbol
+# ⌘ – command
+# ⌥ – option
+# ⇧ - shift
+# ⎋ – ESC
+# ⇪ – Capslock
+# ⏎ – Return
+# ⌫ – delete
 
 myPackage.commands
   'execute-in-terminal':
@@ -55,15 +55,17 @@ myPackage.commands
     enabled: true
     action: ->
       @key 'b', 'command'
-  'delete-word-to-start':
-    spoken: 'steffi'
-    description: 'Delete word to start.'
-    enabled: true
-    action: ->
-      @key 'delete', 'option'
   'comment-uncomment':
     spoken: 'cominar'
     description: 'Comment/uncomment with line comment.'
     enabled: true
     action: ->
       @key '/', 'command'
+
+myPackage.implement
+  'delete-word-to-start':
+    spoken: 'steffi'
+    description: 'Delete word to start.'
+    enabled: true
+    action: ->
+      @key 'delete', 'option'
