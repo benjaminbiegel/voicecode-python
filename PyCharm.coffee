@@ -43,29 +43,21 @@ myPackage.commands
     enabled: true
     action: ->
       @key 'a', 'command shift'
-  'goto-line':
-    spoken: 'liness'
-    description: 'Go to line.'
-    enabled: true
-    action: ->
-      @key 'l', 'command'
   'goto-declaration':
     spoken: 'declark'
     description: 'Go to declaration.'
     enabled: true
     action: ->
       @key 'b', 'command'
-  'comment-uncomment':
-    spoken: 'cominar'
-    description: 'Comment/uncomment with line comment.'
-    enabled: true
-    action: ->
-      @key '/', 'command'
 
 myPackage.implement
-  'delete-word-to-start':
-    spoken: 'steffi'
-    description: 'Delete word to start.'
-    enabled: true
-    action: ->
-      @key 'delete', 'option'
+  'editor:move-to-line-number': (input) ->
+    @key 'l', 'command'
+  'delete:partial-word': ->
+    @key 'delete', 'option'
+  'editor:toggle-comments': ({first, last} = {}) ->
+    @key '/', 'command'
+  'object:forward': ->
+    @key ']', 'command'
+  'object:backward': ->
+    @key '[', 'command'
