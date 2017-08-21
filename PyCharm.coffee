@@ -36,7 +36,7 @@ myPackage.commands
     description: 'Debug current script.'
     enabled: true
     action: ->
-      @key 'd', 'control'
+      @key 'd', 'shift control'
   'find-by-action':
     spoken: 'actics'
     description: 'Find by action.'
@@ -61,3 +61,7 @@ myPackage.implement
     @key ']', 'command'
   'object:backward': ->
     @key '[', 'command'
+  'cursor:way-up': ->
+    @key 'pageup', 'command'
+  'cursor:way-down': ->
+    @key 'pagedown', 'command'
