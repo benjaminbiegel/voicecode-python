@@ -17,10 +17,11 @@ myPackage = Packages.register
 # ⇪ – Capslock
 # ⏎ – Return
 # ⌫ – delete
+# ^ - control
 
 myPackage.commands
   'execute-in-terminal':
-    spoken: 'cunch'
+    spoken: 'cute'
     description: 'Execute the selected lines of code in the python console.'
     enabled: true
     action: ->
@@ -49,10 +50,46 @@ myPackage.commands
     enabled: true
     action: ->
       @key 'b', 'command'
+  'activate-ace-jump':
+    spoken: 'swan'
+    description: 'Activate ace jump.'
+    misspellings: ['sworn']
+    enabled: true
+    action: ->
+      @key ';', 'control'
+  'display-line-markers':
+    spoken: 'swans'
+    misspellings: ['swarms']
+    description: 'Ace jump. Display line markers.'
+    enabled: true
+    action: ->
+      @key ';', 'control shift'
+  'start-in-target-mode':
+    spoken: 'sworf'
+    description: 'Ace jump. Start and target mode.'
+    enabled: true
+    action: ->
+      @key ';', 'control option'
+  'extract-rename':
+    spoken: 'rename'
+    description: 'Rename variable.'
+    enabled: true
+    action: ->
+      @key 'f6', 'shift'
+  'python-console':  # Must be added manually as a shortcut
+    spoken: 'go console'
+    description: 'Go to the python console'
+    enabled: true
+    action: ->
+      @key 'c', 'control option command'
 
 myPackage.implement
   'editor:move-to-line-number': (input) ->
     @key 'l', 'command'
+    if input
+      @delay 10
+      @string input
+      @key 'return'
   'delete:partial-word': ->
     @key 'delete', 'option'
   'editor:toggle-comments': ({first, last} = {}) ->
@@ -62,6 +99,13 @@ myPackage.implement
   'object:backward': ->
     @key '[', 'command'
   'cursor:way-up': ->
-    @key 'pageup', 'command'
+    @key 'home', 'command'
   'cursor:way-down': ->
-    @key 'pagedown', 'command'
+    @key 'end', 'command'
+  'delete:way-left': ->
+    @key 'left', 'command shift'
+    @key 'delete'
+  'object:duplicate': ->
+    @key 'd', 'command'
+  'delete:lines': ->
+    @key 'delete', 'command'
