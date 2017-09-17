@@ -82,6 +82,16 @@ myPackage.commands
     enabled: true
     action: ->
       @key 'c', 'control option command'
+  'delete-backward-camel':  # Must be added manually as a shortcut
+     spoken: 'junkcam'
+     enabled: true
+     action: ->
+       @key 's', 'control option command'
+  'delete-forward-camel':  # Must be added manually as a shortcut
+      spoken: 'spunkcam'
+      enabled: true
+      action: ->
+        @key 'e', 'control option command'
 
 myPackage.implement
   'editor:move-to-line-number': (input) ->
