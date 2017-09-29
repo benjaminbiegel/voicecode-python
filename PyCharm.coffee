@@ -20,8 +20,9 @@ myPackage = Packages.register
 # ^ - control
 
 myPackage.commands
-  'execute-in-terminal':
+  'execute-in-console':
     spoken: 'cute'
+    misspellings: ['acute']
     description: 'Execute the selected lines of code in the python console.'
     enabled: true
     action: ->
@@ -33,11 +34,15 @@ myPackage.commands
     action: ->
       @key 'r', 'control'
   'debug-python-script':
-    spoken: 'debug'
-    description: 'Debug current script.'
+    spoken: 'debugger'
+    description: 'Debug current script or stop debug mode.'
     enabled: true
-    action: ->
-      @key 'd', 'shift control'
+    grammarType: 'oneArgument'
+    action: (input) ->
+      if input?
+        @key 'f2', 'command'  #Shortcut for stop debug mode
+      else
+        @key 'd', 'shift control'  #Shortcut for run in debug mode
   'find-by-action':
     spoken: 'actics'
     description: 'Find by action.'
@@ -68,8 +73,10 @@ myPackage.commands
     spoken: 'sworf'
     description: 'Ace jump. Start and target mode.'
     enabled: true
-    action: ->
+    action: (input) ->
       @key ';', 'control option'
+      if input
+        @string input
   'extract-rename':
     spoken: 'rename'
     description: 'Rename variable.'
@@ -92,6 +99,35 @@ myPackage.commands
       enabled: true
       action: ->
         @key 'e', 'control option command'
+  'execute-next-word':
+      spoken: 'cutie'
+      misspellings: ['security']
+      enabled: true
+      action: ->
+        @do 'cursor:way-left'
+        @do 'selection:word-right'
+        @do 'python:execute-in-console'
+        @delay 50
+        @do 'cursor:way-left'
+  'toggle-breakpoint':
+      spoken: 'breakpoint'
+      misspellings: ['breakpoints']
+      enabled: true
+      action: ->
+        @key 'f8', 'command'
+  'select-next-tab':
+      spoken: 'next tab'
+      misspellings: ['next tape']
+      enabled: true
+      action: ->
+        @key ']', 'shift command'
+  'select-previous-tab':
+      spoken: 'previous tab'
+      misspellings: ['previous tape']
+      enabled: true
+      action: ->
+        @key '[', 'shift command'
+
 
 myPackage.implement
   'editor:move-to-line-number': (input) ->
@@ -119,3 +155,7 @@ myPackage.implement
     @key 'd', 'command'
   'delete:lines': ->
     @key 'delete', 'command'
+  'selection:way-up': ->
+    @key 'home', 'shift command'
+  'selection:way-down': ->
+    @key 'end', 'shift command'
