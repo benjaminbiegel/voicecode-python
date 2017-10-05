@@ -4,7 +4,12 @@ Settings.vocabulary = {
     "number by": "numpy",
     "numb pie": "numpy",
     "none pie": "numpy",
+    "numb by": "numpy",
     "self-doubt": "self.",
-    "self-taught": "self."
+    "self-taught": "self.",
+    "I look":
+      python: '.iloc['
+    "look":
+      python: '.loc[',
   }
 }

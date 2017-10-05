@@ -35,6 +35,7 @@ myPackage.commands
       @key 'r', 'control'
   'debug-python-script':
     spoken: 'debugger'
+    misspellings: ['defogger']
     description: 'Debug current script or stop debug mode.'
     enabled: true
     grammarType: 'oneArgument'
@@ -42,7 +43,7 @@ myPackage.commands
       if input?
         @key 'f2', 'command'  #Shortcut for stop debug mode
       else
-        @key 'd', 'shift control'  #Shortcut for run in debug mode
+        @key 'd', 'control'  #Shortcut for run in debug mode
   'find-by-action':
     spoken: 'actics'
     description: 'Find by action.'
@@ -91,17 +92,19 @@ myPackage.commands
       @key 'c', 'control option command'
   'delete-backward-camel':  # Must be added manually as a shortcut
      spoken: 'junkcam'
+     misspellings: ['junk cam', 'junk him']
      enabled: true
      action: ->
        @key 's', 'control option command'
   'delete-forward-camel':  # Must be added manually as a shortcut
       spoken: 'spunkcam'
+      misspellings: ['spunk him', "spunk I'm"]
       enabled: true
       action: ->
         @key 'e', 'control option command'
   'execute-next-word':
       spoken: 'cutie'
-      misspellings: ['security']
+      misspellings: ['security', 'judy']
       enabled: true
       action: ->
         @do 'cursor:way-left'
@@ -116,18 +119,16 @@ myPackage.commands
       action: ->
         @key 'f8', 'command'
   'select-next-tab':
-      spoken: 'next tab'
-      misspellings: ['next tape']
+      spoken: 'lips'
+      misspellings: ['ellipsis']
       enabled: true
       action: ->
         @key ']', 'shift command'
   'select-previous-tab':
-      spoken: 'previous tab'
-      misspellings: ['previous tape']
+      spoken: 'libby'
       enabled: true
       action: ->
         @key '[', 'shift command'
-
 
 myPackage.implement
   'editor:move-to-line-number': (input) ->
@@ -159,3 +160,19 @@ myPackage.implement
     @key 'home', 'shift command'
   'selection:way-down': ->
     @key 'end', 'shift command'
+  'text-manipulation:move-line-down': ->
+    @key 'down', 'shift option'
+  'text-manipulation:move-line-up': ->
+    @key 'up', 'shift option'
+  'symbols:surround-braces': ->
+    @key '{'
+    @key '}'
+    @key 'left'
+  'symbols:brackets': ->
+    @key '['
+    @key ']'
+    @key 'left'
+  'symbols:surround-parentheses': ->
+    @key '('
+    @key ')'
+    @key 'left'
