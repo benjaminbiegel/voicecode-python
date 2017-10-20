@@ -4,3 +4,6 @@ renameList =
   'symbols:brackets': 'dax'
 _.each renameList, (value, key, list) ->
   Commands.changeSpoken key, value
+
+Commands.addMisspellings 'common:enter', ['chuck']
+Commands.addMisspellings 'symbols:brackets', ['decks', 'dex']
