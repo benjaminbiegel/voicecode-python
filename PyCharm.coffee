@@ -31,19 +31,19 @@ myPackage.commands
     spoken: 'lunch'
     description: 'Run current script.'
     enabled: true
-    action: ->
-      @key 'r', 'control'
-  'debug-python-script':
-    spoken: 'luncheon'
-    misspellings: 'luncheons'
-    description: 'Debug current script or stop debug mode.'
-    enabled: true
     grammarType: 'oneArgument'
     action: (input) ->
       if input?
-        @key 'f2', 'command'  #Shortcut for stop debug mode
-      else
-        @key 'd', 'control'  #Shortcut for run in debug mode
+        if input == 'stop'
+          @key 'f2', 'command'
+        else if input == 'run'
+          @key 'r', 'control'
+        else if input == 'test'
+          @key 'd', 'control'
+        else if input == 'running'
+          @key 'r', 'control shift'
+        else if input == 'testing'
+          @key 'd', 'control shift'
   'resume-debug-commode':
     spoken: 'lender'
     description: 'Resume program.'
@@ -57,7 +57,7 @@ myPackage.commands
     action: ->
       @key 'a', 'command shift'
   'goto-declaration':
-    spoken: 'declark'
+    spoken: 'wayne'
     description: 'Go to declaration.'
     enabled: true
     action: ->
@@ -118,9 +118,26 @@ myPackage.commands
         @do 'python:execute-in-console'
         @delay 50
         @do 'cursor:way-left'
+  'execute-and-evaluate':
+      spoken: 'cutive'
+      misspellings: ['curative', 'judith', 'cute if', 'putative', 'q chief']
+      enabled: true
+      action: ->
+        @do 'python:execute-in-console'
+        @delay 300
+        @do 'cursor:up'
+        @do 'python:execute-next-word'
+  'double-click-and-evaluate':
+      spoken: 'cutler'
+      description: 'Double-click and execute in console.'
+      enabled: true
+      action: ->
+        @doubleClick()
+        @delay 100
+        @do 'python:execute-in-console'
   'toggle-breakpoint':
       spoken: 'breakpoint'
-      misspellings: ['breakpoints']
+      misspellings: ['breakpoints', 'right point', 'right points']
       enabled: true
       action: ->
         @key 'f8', 'command'
@@ -132,39 +149,53 @@ myPackage.commands
         @do 'editor:toggle-comments'
         @key 'up'
         @key 'up'
-
+  'restart-invalidate':  # Must be added manually as a shortcut
+      spoken: 'restart program'
+      enabled: true
+      action: ->
+        @key 's', 'command'
+        @key 'r', 'control option command'
+        @delay 0.1
+        @key 'enter'
+  'integer-indexing':
+      spoken: 'looking'
+      enabled: true
+      autoSpacing: 'never never'
+      action: ->
+        @string '.iloc['
+  'name-indexing':
+      spoken: 'look'
+      enabled: true
+      autoSpacing: 'never never'
+      action: ->
+        @string '.loc['
+  'copy-potentially-whole-line':
+    spoken: 'stool'
+    description: 'Normal copy, however copies whole line if nothing is selected in PyCharm.'
+    enabled: true
+    action: ->
+        copied = @getSelectedText()
+        if copied
+          @do 'clipboard:copy'
+        else
+          @do 'selection:current-line'
+          @do 'clipboard:copy'
 
 myPackage.implement
-  'editor:move-to-line-number': (input) ->
-    @key 'l', 'command'
-    if input
-      @delay 10
-      @string input
-      @key 'return'
   'selection:next-occurrence': (input) ->
     if input?.value?
       term = input?.value
-      @applescript """
-      tell application "System Events" to key code 3 using {command down}
-      delay 0.1
-      tell application "System Events" to keystroke "#{term}"
-      delay 0.1
-      tell application "System Events" to key code 53
-      """
+      @key 'f', 'command'
+      @delay 50
+      @paste term
+      @delay 50
+      @key 'escape'
     else
       @key 'f', 'command'
-  'selection:next-selection-occurrence': ->
+  'common:find-next': ->
     @key 'g', 'command'
-  'selection:previous-selection-occurrence': ->
+  'common:find-previous': ->
     @key 'g', 'shift command'
-  'delete:partial-word': ->
-    @key 'delete', 'option'
-  'editor:toggle-comments': ({first, last} = {}) ->
-    @key '/', 'command'
-  'object:forward': ->
-    @key ']', 'command'
-  'object:backward': ->
-    @key '[', 'command'
   'cursor:way-up': ->
     @key 'home', 'command'
   'cursor:way-down': ->
@@ -172,10 +203,6 @@ myPackage.implement
   'delete:way-left': ->
     @key 'left', 'command shift'
     @key 'delete'
-  'object:duplicate': ->
-    @key 'd', 'command'
-  'delete:lines': ->
-    @key 'delete', 'command'
   'selection:way-up': ->
     @key 'home', 'shift command'
   'selection:way-down': ->
@@ -184,23 +211,11 @@ myPackage.implement
     @key 'down', 'shift option'
   'text-manipulation:move-line-up': ->
     @key 'up', 'shift option'
-  'symbols:surround-braces': ->
-    @key '{'
-    @key '}'
-    @key 'left'
-  'symbols:brackets': ->
-    @key '['
-    @key ']'
-    @key 'left'
-  'symbols:surround-parentheses': ->
-    @key '('
-    @key ')'
-    @key 'left'
-  'symbols:surround-spaces': ->
-    @key 'space'
-    @key 'space'
-    @key 'left'
-  'object:next': ->
-    @key ']', 'shift command'
-  'object:previous': ->
-    @key '[', 'shift command'
+  'text-manipulation:nudge-text-left': ->
+    @key 'left', 'option'
+    @key 'delete'
+    @key 'right', 'option'
+  'mouse-combo:cut-remove-hovered-line' :->
+    @do 'mouse-combo:select-hovered-line'
+    @do 'common:delete'
+    @do 'common:delete'
