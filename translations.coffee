@@ -10,6 +10,7 @@ Settings.vocabulary = {
     "number pie": "numpy",
     "number sign": "numpy",
     "number package": "numpy",
+    "lumber by": "numpy",
     "self-doubt": "self.",
     "self-taught": "self.",
     "post sql": "postgresql",
@@ -24,6 +25,7 @@ Settings.vocabulary = {
     "end so we": "entsoe",
     "python charming": "PyCharm",
     "height on charming": "PyCharm",
+    "hyphen charming": "PyCharm",
     "ro": "row",
     "rose": "rows",
     "4 cost": "forecast",
@@ -43,6 +45,7 @@ Settings.vocabulary = {
     "march": "merge",
     "crisis": "prices",
     "jason": "json",
+    "jinx": "j",
     "our":
       python: "hour",
     "endo":
@@ -51,8 +54,6 @@ Settings.vocabulary = {
       python: 'end'
     "indo":
       python: 'end'
-    "hit":
-      python: 'head()'
     "jam":
       python: 'yaml'
     "jim":
@@ -101,10 +102,26 @@ Settings.vocabulary = {
       python: "for"
     "forte":
       python: "for"
+    "fate":
+      python: "for"
     "drop-down":
       python: "dropdown"
     "crop-down":
       python: "dropdown"
+    "conflicts":
+      python: "cvx"
+    "convex":
+      python: "cvx"
+    "victor":
+      python: "vector"
+    "dayshift":
+      python: "day ahead"
+    "headgear":
+      python: "head()"
+    "0 s":
+      python: "zeros"
+    "zeros s":
+      python: "zeros"
     "sodium":
       iterm: 'sudo'
   }

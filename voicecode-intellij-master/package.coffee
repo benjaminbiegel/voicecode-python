@@ -60,7 +60,7 @@ pack.implement
   scope: 'intellij',
   # Object package
   'object:duplicate': ->
-    @openMenuBarPath(['Edit', 'Duplicate Line'])
+    @key 'd', 'command'
   'object:backward': ->
     @openMenuBarPath(['Navigate', 'Back'])
   'object:forward': ->

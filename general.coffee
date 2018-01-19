@@ -16,7 +16,7 @@ Package.commands
     multiPhraseAutoSpacing: "normal normal"
     action: (input) ->
       if input
-        @string input[input.length-1]
+        @string input[sinput.length-1]
   'pick-first-word':
     spoken: 'pickle'
     grammarType: "textCapture"
@@ -74,14 +74,10 @@ Package.commands
         @do 'common:enter'
   'get-path-of-file':
     spoken: 'pathfinder'
-    description: 'Copy path of hovered file to clipboard.'
+    description: 'Copy path of selected file to clipboard.'
     enabled: true
     action: ->
-        @click()
-        @rightClick()
-        @string 's'
-        @down()
-        @key 'enter', 'option'
+        @key 'c', 'command option'
   # 'test-command':
   #   spoken: 'testing'
   #   description: 'Test'

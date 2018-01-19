@@ -96,18 +96,18 @@ myPackage.commands
     enabled: true
     action: ->
       @key 'c', 'control option command'
-  'delete-backward-camel':  # Must be added manually as a shortcut
-     spoken: 'junkcam'
-     misspellings: ['junk cam', 'junk him', 'junk kim', "junk i'm",  "junk I'm"]
-     enabled: true
-     action: ->
-       @key 's', 'control option command'
-  'delete-forward-camel':  # Must be added manually as a shortcut
-      spoken: 'spunkcam'
-      misspellings: ['spunk him', "spunk I'm", "spunk cam", "spunk kim", "spunk i'm"]
-      enabled: true
-      action: ->
-        @key 'e', 'control option command'
+  # 'delete-backward-camel':  # Must be added manually as a shortcut
+  #    spoken: 'junkcam'
+  #    misspellings: ['junk cam', 'junk him', 'junk kim', "junk i'm",  "junk I'm"]
+  #    enabled: true
+  #    action: ->
+  #      @key 's', 'control option command'
+  # 'delete-forward-camel':  # Must be added manually as a shortcut
+  #     spoken: 'spunkcam'
+  #     misspellings: ['spunk him', "spunk I'm", "spunk cam", "spunk kim", "spunk i'm"]
+  #     enabled: true
+  #     action: ->
+  #       @key 'e', 'control option command'
   'execute-next-word':
       spoken: 'cutie'
       misspellings: ['security', 'judy']
@@ -215,7 +215,10 @@ myPackage.implement
     @key 'left', 'option'
     @key 'delete'
     @key 'right', 'option'
-  'mouse-combo:cut-remove-hovered-line' :->
-    @do 'mouse-combo:select-hovered-line'
+  'mouse-combo:cut-remove-hovered-line': ->
+    @do 'mouse:triple-click'
     @do 'common:delete'
-    @do 'common:delete'
+  'delete:partial-word':  ->
+    @key 's', 'control option command'
+  'delete:partial-word-forward': ->
+    @key 'e', 'control option command'
