@@ -22,7 +22,7 @@ myPackage = Packages.register
 myPackage.commands
   'execute-in-console':
     spoken: 'cute'
-    misspellings: ['acute']
+    misspellings: ['acute', 'queued']
     description: 'Execute the selected lines of code in the python console.'
     enabled: true
     action: ->
@@ -36,7 +36,7 @@ myPackage.commands
       if input?
         if input == 'stop'
           @key 'f2', 'command'
-        else if input == 'run'
+        else if input in ['run', 'one', 'from']
           @key 'r', 'control'
         else if input == 'test'
           @key 'd', 'control'
@@ -47,6 +47,7 @@ myPackage.commands
   'resume-debug-commode':
     spoken: 'lender'
     description: 'Resume program.'
+    misspellings: ['linda']
     enabled: true
     action: ->
         @key 'r', 'command option'
@@ -59,6 +60,7 @@ myPackage.commands
   'goto-declaration':
     spoken: 'wayne'
     description: 'Go to declaration.'
+    misspellings: ['when']
     enabled: true
     action: ->
       @key 'b', 'command'
@@ -131,6 +133,7 @@ myPackage.commands
       spoken: 'cutler'
       description: 'Double-click and execute in console.'
       enabled: true
+      misspellings: ['coupler', 'popular', 'carla', 'kudlow', 'cobbler', 'coppola']
       action: ->
         @doubleClick()
         @delay 100
@@ -171,6 +174,7 @@ myPackage.commands
         @string '.loc['
   'copy-potentially-whole-line':
     spoken: 'stool'
+    misspellings: ['school']
     description: 'Normal copy, however copies whole line if nothing is selected in PyCharm.'
     enabled: true
     action: ->
@@ -180,6 +184,39 @@ myPackage.commands
         else
           @do 'selection:current-line'
           @do 'clipboard:copy'
+  'align-with-previous-line':
+    spoken: 'aligner'
+    misspellings: ['eyeliner', 'alina', 'liner', 'alanna', 'ele', 'elana', 'elena', 'elinor', 'elaine']
+    description: 'Align with the line above current line.'
+    enabled: true
+    action: ->
+        @do 'cursor:way-left'
+        @do 'selection:way-left'
+        @do 'common:delete'
+        @do 'common:delete'
+        @do 'common:enter'
+  'forward-slash-new-line':
+    spoken: 'shane'
+    description: 'Smart new line.'
+    misspellings: ['shady', 'chain']
+    enabled: true
+    action: ->
+        @do 'symbols:backslash'
+        @do 'common:enter'
+  'find-replace':
+    spoken: 'replace'
+    description: 'Open find replace.'
+    enabled: true
+    action: ->
+        @key 'r', 'command'
+        @do 'common:enter'
+  'extraction-method':
+    spoken: 'extract method'
+    description: 'Extract method.'
+    enabled: true
+    action: ->
+        @key 'm', 'option command'
+
 
 myPackage.implement
   'selection:next-occurrence': (input) ->
@@ -222,3 +259,7 @@ myPackage.implement
     @key 's', 'control option command'
   'delete:partial-word-forward': ->
     @key 'e', 'control option command'
+  'cursor:partial-word-left': ->
+    @key 'p', 'control option command'
+  'cursor:partial-word-right': ->
+    @key 'n', 'control option command'

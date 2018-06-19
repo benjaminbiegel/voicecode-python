@@ -1,6 +1,7 @@
 Settings.vocabulary = {
   translations: {
     "panels": "pandas",
+    "penalties": "pandas",
     "number by": "numpy",
     "numb pie": "numpy",
     "none pie": "numpy",
@@ -41,18 +42,32 @@ Settings.vocabulary = {
     "visual take": "visotech",
     "visual tick": "visotech",
     "ritual tech": "visotech",
+    "media online": "mkonline",
+    "he picks": "epex",
     "murch": "merge",
     "march": "merge",
     "crisis": "prices",
     "jason": "json",
     "jinx": "j",
+    "bill": "d",
+    "charo": "c",
+    "sola": "solar",
+    "sora": "solar",
+    "iz": "is",
+    "hi": "high",
+    "formant": "format",
+    "quartz": "4",
     "our":
       python: "hour",
     "endo":
       python: 'end'
     "end oh":
       python: 'end'
+    "and oh":
+      python: 'end'
     "indo":
+      python: 'end'
+    "andrew":
       python: 'end'
     "jam":
       python: 'yaml'
@@ -86,6 +101,8 @@ Settings.vocabulary = {
       python: "set"
     "lame":
       python: "lambda x: "
+    "lady":
+      python: "lambda x: "
     "claim":
       python: "lambda x: "
     "else if":
@@ -118,10 +135,60 @@ Settings.vocabulary = {
       python: "day ahead"
     "headgear":
       python: "head()"
+    "hit gear":
+      python: "head()"
     "0 s":
       python: "zeros"
     "zeros s":
       python: "zeros"
+    "cirrhosis":
+      python: "zeros"
+    "beta":
+      python: "data"
+    "finn":
+      python: "for"
+    "tricks":
+      python: "x"
+    "treks":
+      python: "x"
+    "annie":
+      python: "any"
+    "once":
+      python: "ones"
+    "don't":
+      python: "dot"
+    "ambulance":
+      python: "imbalance"
+    "said index":
+      python: "set_index"
+    "recent index":
+      python: "reset index"
+    "to do":
+      python: "todo"
+    "2 do":
+      python: "todo"
+    "two do":
+      python: "todo"
+    "if name is main":
+      python: "if __name__ == '__main__':"
+    "if name is mine":
+      python: "if __name__ == '__main__':"
+    "if names is mine":
+      python: "if __name__ == '__main__':"
+    "if name his main":
+      python: "if __name__ == '__main__':"
+    "if name this main":
+      python: "if __name__ == '__main__':"
+    "gary":
+      python: "query"
+    "crary":
+      python: "query"
+    "prairie":
+      python: "query"
+    "curie":
+      python: "query"
+    "daytime":
+      python: "datetime"
     "sodium":
       iterm: 'sudo'
   }

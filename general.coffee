@@ -59,12 +59,13 @@ Package.commands
     action: ->
         @do 'delete:word'
         @do 'delete:word-forward'
-  'shift-enter':
+  'click-enter':
     spoken: 'shiffslap'
-    description: 'Shift + enter.'
+    description: 'Click + enter.'
     enabled: true
     action: ->
-        @key 'enter', 'shift'
+        @do 'mouse:click'
+        @do 'common:enter'
   'paste-enter':
     spoken: 'sparks'
     description: 'Paste + enter.'
@@ -72,12 +73,85 @@ Package.commands
     action: ->
         @do 'clipboard:paste'
         @do 'common:enter'
+  'paste-comma-space':
+    spoken: 'spate'
+    misspellings: ['spade']
+    description: 'Paste + , + space'
+    enabled: true
+    action: ->
+        @do 'clipboard:paste'
+        @do 'symbols:comma-space'
+  'comma-space-paste':
+    spoken: 'waste'
+    description: ', + space + paste'
+    enabled: true
+    action: ->
+        @do 'symbols:comma-space'
+        @do 'clipboard:paste'
   'get-path-of-file':
     spoken: 'pathfinder'
     description: 'Copy path of selected file to clipboard.'
     enabled: true
     action: ->
         @key 'c', 'command option'
+  'deleted-from-curse-onto-mouse':
+    spoken: 'chiffjunk'
+    misspellings: ['chiff junk']
+    description: 'Delete everything from the curse until the mouse.'
+    enabled: true
+    action: ->
+        @do 'mouse:shift-click'
+        @do 'common:delete'
+  'smart-parenthesis-surround':
+    spoken: 'prex sing'
+    misspellings: ['prex singh']
+    description: 'Most we left, left parenthesis, mouse we write, right parenthesis.'
+    enabled: true
+    action: ->
+        @do 'cursor:way-left'
+        @do 'symbols:left-parentheses'
+        @do 'cursor:way-right'
+        @do 'symbols:right-parentheses'
+  'smart-parenthesis-close-right':
+    spoken: 'prex end'
+    misspellings: ['prex and']
+    description: 'Left parenthesis, mouse we write, right parenthesis.'
+    enabled: true
+    action: ->
+        @do 'symbols:left-parentheses'
+        @do 'cursor:way-right'
+        @do 'symbols:right-parentheses'
+  'space-then-left':
+    spoken: 'spoon'
+    description: 'Make a space, then move cursor left.'
+    enabled: true
+    action: ->
+        @do 'symbols:space'
+        @do 'cursor:left'
+        @do 'symbols:right-parentheses'
+  'word-left-then-spunk-then-word-right':
+    spoken: 'fist'
+    description: 'Remove unwanted space.'
+    enabled: true
+    action: ->
+        @do 'cursor:word-left'
+        @do 'common:forward-delete'
+        @do 'cursor:word-right'
+  'parenthesis-then-quote':
+    spoken: 'pronto'
+    description: "('')"
+    enabled: true
+    action: ->
+        @do 'symbols:surround-parentheses'
+        @do 'symbols:surround-single-quotes'
+  'brackets-then-quote':
+    spoken: 'prime'
+    description: "['']"
+    enabled: true
+    action: ->
+        @do 'symbols:brackets'
+        @do 'symbols:surround-single-quotes'
+
   # 'test-command':
   #   spoken: 'testing'
   #   description: 'Test'
